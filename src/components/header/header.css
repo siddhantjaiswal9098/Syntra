@@ -1,0 +1,48 @@
+.SearchBar {
+    padding: 10px;
+}
+#elementID {
+    color: #8c939d;
+}
+#searchIcon.btn-primary {
+    background-color: #fff !important;
+    border-color: #ced4da !important;
+}
+.btn-outline-secondary {
+    border-color: #F8F9FA !important;
+}
+#searchIcon.btn {
+    width: 80px;
+}
+.logoApk {
+    height: 50px;
+    width: 50px;
+}
+.boldText {
+    font-weight: 'bold';
+}
+.dropdown-menu {
+    min-width: 16rem !important;
+}
+.column {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.rowData {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin: 5px;
+}
+.dropdown-item {
+    padding: 0rem 1.5rem !important;
+}
+.WelcomeText {
+    font-weight: bolder;
+    padding: 0rem 1.0rem !important;
+}
+.manageOrders {
+    padding: 0rem 1.0rem !important;
+}
