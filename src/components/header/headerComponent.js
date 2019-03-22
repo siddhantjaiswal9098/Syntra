@@ -10,20 +10,19 @@ import {
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
-  Input,
   InputGroup,
   InputGroupAddon,
   Button,
-  Row,
   Col,
   DropdownItem } from 'reactstrap';
 import SelectedComponent from './selectedButton/selectedButtonComponent'
+import Suggestion from './suggestionCompoent';
 import './header.css'
 
 export default class Header extends React.Component {
   constructor(props) {
     super(props);
-
+    console.log('props', props)
     this.toggle = this.toggle.bind(this);
     this.state = {
       isOpen: false
@@ -33,6 +32,12 @@ export default class Header extends React.Component {
     this.setState({
       isOpen: !this.state.isOpen
     });
+  }
+  navigateToSignup() {
+    console.log('history:',this.props.props.history.push('/signup'));
+  }
+  navigateToLogin() {
+    console.log('history:',this.props.props.history.push('/login'));
   }
   render() {
     return (
@@ -48,7 +53,8 @@ export default class Header extends React.Component {
                 <i id='elementID' className="fa fa-search" aria-hidden="true" />
               </Button>
               </InputGroupAddon>
-              <Input placeholder="username" />
+              <Suggestion props={this.props.props} />
+              {/* <Input placeholder="Search for product,brands and more.." /> */}
             </InputGroup>
             <Nav className="ml-auto" navbar>
               <UncontrolledDropdown nav inNavbar>
@@ -63,8 +69,8 @@ export default class Header extends React.Component {
                         To access and manage orders
                       </div>
                       <div className='rowData'>
-                        <Col className='column' xs="6"><Button color="primary">SignUp</Button></Col>
-                        <Col className='column' xs="6"><Button color="primary">LogIn</Button></Col>
+                        <Col className='column' xs="6"><Button onClick={() => this.navigateToSignup()} color="primary">SignUp</Button></Col>
+                        <Col className='column' xs="6"><Button color="primary" onClick={() => this.navigateToLogin()} >LogIn</Button></Col>
                       </div>
                     <DropdownItem>
                       Orders

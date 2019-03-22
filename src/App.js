@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import { Alert, UncontrolledAlert, Badge, Breadcrumb, BreadcrumbItem, Button } from 'reactstrap';
-import Header from './components/header/headerComponent';
-import Body from './components/body/bodyComponent'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import Signup from './components/signup/signupComponent'
+import Login from './components/login/loginComponent'
+import Search from './components/search/searchComponent'
+import Home from './Home'
+
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <Header />
-        <Body />
-      </div>
+      <Router>
+        <div>
+          <Route exact path="/" component={Home} />
+          <Route exact path='/signup' component={Signup} />
+          <Route exact path='/login' component={Login} />
+          <Route exact path='/=:data' component={Search} />
+        </div>
+      </Router>
     );
   }
 }

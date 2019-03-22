@@ -46,7 +46,7 @@ class Body extends Component {
 
   render() {
     const { activeIndex } = this.state;
-    console.log('inChildRender:-', this.props.items)
+    // console.log('inChildRender:-', this.props.items)
     const slides = this.props.items.map((item) => {
       return (
         <CarouselItem

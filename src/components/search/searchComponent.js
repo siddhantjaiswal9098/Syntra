@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import CorouselTop from './corouselTop'
-import Cards from './cards'
+import CorouselTop from './../body/corouselTop'
+import Cards from './../body/cards'
 import image1 from './../../assets/images/image1.jpg'
 import image2 from './../../assets/images/image2.jpg'
 import image3 from './../../assets/images/image3.jpg'
@@ -11,7 +11,7 @@ import { bindActionCreators } from 'redux';
 import * as Actions from './../../actions/homeActions';
 import { connect } from 'react-redux';
 import { Spinner } from 'reactstrap';
-
+import './searchComponentstyle.css'
 class Body extends Component {
   constructor(props) {
     super(props);
@@ -19,7 +19,8 @@ class Body extends Component {
     this.loadFunc = this.loadFunc.bind(this);
     this.state = {
       isOpen: false,
-      arrLoading: []
+      arrLoading: [],
+      searchTag: this.props.match.params.data
     };
     this.counter = 0;
   }
@@ -70,8 +71,9 @@ class Body extends Component {
     let arrLoading = this.state.arrLoading
     arrLoading.push(nextProps.userDetail);
     this.setState({ arrLoading: arrLoading });
-
-
+  }
+  componentDidMount() {
+    console.log('props', this.props.match.params.data)
   }
   render() {
     if(this.counter === 10) {
@@ -79,8 +81,6 @@ class Body extends Component {
     }
     return (
         <div>
-            <CorouselTop items={this.items1}/>
-            {/* <Cards /> */}
             <InfiniteScroll
                 pageStart={0}
                 loadMore={this.loadFunc}
@@ -89,8 +89,10 @@ class Body extends Component {
             >
               { this.state.arrLoading.map(item => (
                 <div>
-                  <Cards id={item.id} />
-                  {/* <div style={{backgroundColor: 'gray', margin: 20}} >
+                  <div className="topDiv" style={{ margin: 20, padding: 20}} >
+                  <div style={{fontWeight: 'bolder'}}>
+                    {this.state.searchTag}
+                  </div>
                     <div>
                       ID:
                       {item.id}
@@ -107,8 +109,7 @@ class Body extends Component {
                       USERNAME:
                       {item.username}
                     </div>
-                  </div> */}
-                  <CorouselTop items={this.items2}/>
+                  </div>
                   </div>
               ))}
             </InfiniteScroll>
