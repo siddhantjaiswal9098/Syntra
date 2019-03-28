@@ -17,8 +17,9 @@ import {
   DropdownItem } from 'reactstrap';
 import SelectedComponent from './selectedButton/selectedButtonComponent'
 import Suggestion from './suggestionCompoent';
+import DummyComponent  from './DummyComponent'
 import './header.css'
-
+const ref = React.createRef();
 export default class Header extends React.Component {
   constructor(props) {
     super(props);
@@ -47,6 +48,7 @@ export default class Header extends React.Component {
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <SelectedComponent />
+            <DummyComponent.RefEx ref={ref} someProp='random'/>
             <InputGroup className='SearchBar'>
               <InputGroupAddon addonType="prepend"> 
               <Button id='searchIcon' color="primary">

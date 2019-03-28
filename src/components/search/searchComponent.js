@@ -20,7 +20,10 @@ class Body extends Component {
     this.state = {
       isOpen: false,
       arrLoading: [],
-      searchTag: this.props.match.params.data
+      searchTag: this.props.match.params.data,
+      value1: '',
+      value2: '',
+      value3: '',
     };
     this.counter = 0;
   }
@@ -75,12 +78,40 @@ class Body extends Component {
   componentDidMount() {
     console.log('props', this.props.match.params.data)
   }
+  handleChange(event, id){
+    // let valuejadu = ;
+    this.setState({[`value${id}`] : event.target.value});
+  }
+
+ handleSubmit(event) {
+    console.log('A name was submitted: ' + this.state.value1, this.state.value2, this.state.value3 );
+    event.preventDefault();
+  }
+
   render() {
     if(this.counter === 10) {
       this.counter = 0;
     }
     return (
         <div>
+           <form onSubmit={(event) => this.handleSubmit(event)}>
+              <label>
+                Name:
+                <input type="text" value={this.state.value1} onChange={(e) =>this.handleChange(e,1)} />
+                Last Name:
+                <input type="text" value={this.state.value2} onChange={(e) =>this.handleChange(e,2)} />
+                Number:
+                <input type="text" value={this.state.value3} onChange={(e) => this.handleChange(e,3)} />
+                <select>
+                  <option value="grapefruit">someOption</option>
+                  <option value="lime">Other Option</option>
+                  <option selected value="coconut">Someother Option</option>
+                  <option value="mango">Last Option</option>
+                </select>
+                <input type="file" />
+              </label>
+              <input type="submit" value="Submit" />
+            </form>
             <InfiniteScroll
                 pageStart={0}
                 loadMore={this.loadFunc}
@@ -88,7 +119,7 @@ class Body extends Component {
                 loader={<Spinner style={{height: 100, width: 100}} type="grow" color="primary" />}
             >
               { this.state.arrLoading.map(item => (
-                <div>
+                <div key={item.email}>
                   <div className="topDiv" style={{ margin: 20, padding: 20}} >
                   <div style={{fontWeight: 'bolder'}}>
                     {this.state.searchTag}
@@ -110,7 +141,7 @@ class Body extends Component {
                       {item.username}
                     </div>
                   </div>
-                  </div>
+                </div>
               ))}
             </InfiniteScroll>
         </div>

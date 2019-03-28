@@ -80,7 +80,6 @@ class Body extends Component {
     return (
         <div>
             <CorouselTop items={this.items1}/>
-            {/* <Cards /> */}
             <InfiniteScroll
                 pageStart={0}
                 loadMore={this.loadFunc}
@@ -88,7 +87,7 @@ class Body extends Component {
                 loader={<Spinner style={{height: 100, width: 100}} type="grow" color="primary" />}
             >
               { this.state.arrLoading.map(item => (
-                <div>
+                <div key={item.email}>
                   <Cards id={item.id} />
                   {/* <div style={{backgroundColor: 'gray', margin: 20}} >
                     <div>
@@ -96,7 +95,7 @@ class Body extends Component {
                       {item.id}
                     </div>
                     <div>
-                      EMAIL:
+                e      EMAIL:
                       {item.email}
                     </div>
                     <div>
@@ -116,7 +115,6 @@ class Body extends Component {
     );
   }
 }
-
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(Actions, dispatch);
 }

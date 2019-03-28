@@ -1,14 +1,11 @@
 // Helper styles for demo
 import './helper.css';
-// import {  DisplayFormikState } from './helper';
-// var extract = require('extract-zip');
 import extract from 'extract-zip'
 import React from 'react';
 import { render } from 'react-dom';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import JSZip from 'jszip'
-// use a BlobReader to read the zip from a Blob object
 
 class LogIn extends React.Component {
   constructor(props) {
