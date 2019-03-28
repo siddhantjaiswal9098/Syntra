@@ -15,6 +15,11 @@ import {
   Button,
   Col,
   DropdownItem } from 'reactstrap';
+
+  import { AwesomeButton } from "react-awesome-button";
+  import "react-awesome-button/dist/styles.css";
+  
+
 import SelectedComponent from './selectedButton/selectedButtonComponent'
 import Suggestion from './suggestionCompoent';
 import DummyComponent  from './DummyComponent'
@@ -71,8 +76,14 @@ export default class Header extends React.Component {
                         To access and manage orders
                       </div>
                       <div className='rowData'>
-                        <Col className='column' xs="6"><Button onClick={() => this.navigateToSignup()} color="primary">SignUp</Button></Col>
-                        <Col className='column' xs="6"><Button color="primary" onClick={() => this.navigateToLogin()} >LogIn</Button></Col>
+                        <Col className='column' xs="6">
+                          <AwesomeButton  onPress={() => this.navigateToSignup()}  type="primary">SignUp</AwesomeButton>
+                          {/* <Button onClick={() => this.navigateToSignup()} color="primary">SignUp</Button> */}
+                        </Col>
+                        <Col className='column' xs="6">
+                          <AwesomeButton  onPress={() => this.navigateToLogin()}  type="primary">LogIn</AwesomeButton>
+                          {/* <Button color="primary" onClick={() => this.navigateToLogin()} >LogIn</Button> */}
+                        </Col>
                       </div>
                     <DropdownItem>
                       Orders

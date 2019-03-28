@@ -2,6 +2,10 @@
 import './helper.css';
 // import {  DisplayFormikState } from './helper';
 // var extract = require('extract-zip');
+
+import { AwesomeButton } from "react-awesome-button";
+import "react-awesome-button/dist/styles.css"
+
 import extract from 'extract-zip'
 import React from 'react';
 import { render } from 'react-dom';
@@ -153,17 +157,18 @@ class SignUp extends React.Component {
                 />
                 {errors.Password &&
                   touched.Password && <div className="input-feedback">{errors.Password}</div>}
-                <button
-                  type="button"
-                  className="outline"
-                  onClick={handleReset}
-                  disabled={!dirty || isSubmitting}
-                >
-                  Reset
-                </button>
-                <button type="submit" disabled={isSubmitting}>
-                  Submit
-                </button>
+
+                <AwesomeButton
+                  onPress={handleReset}
+                  disabled={!dirty || isSubmitting} 
+                  type="submit"  
+                  disabled={isSubmitting}  
+                  type="primary">
+                    Reset
+                </AwesomeButton>
+                     
+                <AwesomeButton className='outlining' type="submit"  disabled={isSubmitting}  type="primary">Submit</AwesomeButton>
+                         
                 </div>
               </form>
             );
